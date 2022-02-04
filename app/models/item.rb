@@ -10,4 +10,9 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates :is_active, inclusion: {in: [true, false]}
 
+ def add_tax_price
+  (self.price * 1.10).round
+ end
+
+
 end

@@ -19,10 +19,10 @@
         <td><%= link_to item.name, admin_item_path(item.id) %></td>
         <td><%= item.price %></td>
         <td><%= item.genre.name %></td>
-        <td><% if is_active = true %>
-             販売中
+        <td><% if item.is_active == true %>
+              <%= item.is_active = "販売中" %>
             <% else %>
-             販売停止中
+              <%= item.is_active = "販売停止中" %>
             <% end %>
         </td>
       </tr>
