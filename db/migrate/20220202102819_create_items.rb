@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.string :image_id
       t.text :introduction
       t.integer :price
-      t.boolean :is_active
+      t.boolean :is_active, default: true
       t.datetime :remember_created_at
       t.datetime :remember_updated_at
 

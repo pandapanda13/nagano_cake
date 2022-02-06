@@ -7,17 +7,10 @@ Rails.application.routes.draw do
     get 'orders/update'
   end
   namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
+    resources :customers, only:[:index, :show, :edit, :update]
   end
   namespace :admin do
     resources :genres, only:[:create, :edit, :index, :update]
-    #get 'genres' => 'genres#index'
-    #post 'genres/create'
-    #get 'genres/edit'
-    #get 'genres/update'
   end
   namespace :admin do
     resources :items, except: [:destroy]
@@ -40,14 +33,21 @@ Rails.application.routes.draw do
     get 'cart_items/empty'
     get 'cart_items/create'
   end
-  namespace :public do
-    get 'customers/update'
+
+  scope module: 'public' do
+    get 'customers/mypage', to: 'customers#show'
+    resources :customers, only:[:edit, :update]
     get 'customers/unsubscribe'
     get 'customers/withdraw'
   end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
+  #namespace :public do
+  scope module: 'public' do
+    root to: 'homes#top'
+    get 'about', to: 'homes#about'
+  end
+
+  scope module: 'public' do
+    get 'items', to: 'items#index'
   end
   # 顧客用
 # URL /customers/sign_in ...
