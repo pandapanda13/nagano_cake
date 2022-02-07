@@ -11,6 +11,79 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <p class="logo"><span>LOGO</span></p>
+          <% if customer_signed_in? %>
+          <ul class="navbar-nav ml-auto">
+            <li><%= link_to customers_mypage_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 マイページ
+                <% end %>
+            </li>
+            <li><%= link_to items_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 商品一覧
+                <% end %>
+            </li>
+            <li><%= link_to public_cart_items_index_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 カート
+                <% end %>
+            </li>
+            <li><%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-outline-dark ml-3" do %></i>
+                 ログアウト
+                <% end %>
+            </li>
+          </ul>
+          <% elsif admin_signed_in? %>
+          <ul class="navbar-nav ml-auto">
+            <li><%= link_to admin_items_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 商品一覧
+                <% end %>
+            </li>
+            <li><%= link_to admin_customers_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 会員一覧
+                <% end %>
+            </li>
+            <li><%= link_to admin_homes_top_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 注文履歴一覧
+                <% end %>
+            </li>
+            <li><%= link_to admin_genres_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 ジャンル一覧
+                <% end %>
+            </li>
+            <li><%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark ml-3" do %></i>
+                 ログアウト
+                <% end %>
+            </li>
+          </ul>
+          <% else %>
+          <ul class="navbar-nav ml-auto">
+            <li><%= link_to about_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 About
+                <% end %>
+            </li>
+            <li><%= link_to items_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 商品一覧
+                <% end %>
+            </li>
+            <li><%= link_to new_customer_registration_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 新規登録
+                <% end %>
+            </li>
+            <li><%= link_to new_customer_session_path, class: "btn btn-outline-dark ml-3" do %></i>
+                 ログイン
+                <% end %>
+            </li>
+          </ul>
+
+
+
+
+          <% end %>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

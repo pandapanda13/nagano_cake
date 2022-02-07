@@ -36,9 +36,10 @@ Rails.application.routes.draw do
 
   scope module: 'public' do
     get 'customers/mypage', to: 'customers#show'
-    resources :customers, only:[:edit, :update]
+    get 'customers/edit', to: 'customers#edit'
+    patch 'customers/update'
     get 'customers/unsubscribe'
-    get 'customers/withdraw'
+    patch 'customers/withdraw'
   end
   #namespace :public do
   scope module: 'public' do

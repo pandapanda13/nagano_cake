@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+   <div class="col-12">
+     <p class= "title">会員情報編集</p><br>
+     <%= form_with model: @customer, url: customers_update_path, local:true do |f| %>
+
+      <div class="field">
+       <label for="name": class="col-4">氏名</label>
+       <%= f.text_field :last_name %>
+       <%= f.text_field :first_name %>
+      </div>
+
+      <div class="field">
+       <label for="name_kana": class="col-4">フリガナ</label>
+       <%= f.text_field :last_name_kana %>
+       <%= f.text_field :first_name_kana %>
+      </div>
+
+      <div class="field">
+       <label for="postal_code": class="col-4">郵便番号</label>
+       <%= f.text_field :postal_code %>
+      </div>
+
+      <div class="field">
+       <label for="address": class="col-4">住所</label>
+       <%= f.text_field :address %>
+      </div>
+
+      <div class="field">
+       <label for="telephone_number": class="col-4">電話番号</label>
+       <%= f.text_field :telephone_number %>
+      </div>
+
+      <div class="field">
+       <label for="email": class="col-4">メールアドレス</label>
+       <%= f.email_field :email %>
+      </div>
+
+      <div class="actions">
+      　<label for="space": class="col-4"></label>
+        <%= f.submit :編集内容を保存, class: 'btn btn-success' %>
+        <%= link_to "退会する", customers_unsubscribe_path, class: 'btn btn-danger' %>
+      </div>
+     <% end %>
+    </div>
+   </div>
+  </div>
