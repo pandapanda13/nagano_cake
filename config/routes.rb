@@ -48,7 +48,11 @@ Rails.application.routes.draw do
   end
 
   scope module: 'public' do
-    get 'items', to: 'items#index'
+   resources :addresses, except:[:new, :show]
+  end
+
+  scope module: 'public' do
+    resources :items, only:[:index, :show]
   end
   # 顧客用
 # URL /customers/sign_in ...

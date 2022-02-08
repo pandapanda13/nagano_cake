@@ -1,0 +1,22 @@
+<p>
+  <span style="font-size:2em;">商品一覧</span>
+  <span style="font-size:1.5em;">(全<%= Item.count %>件）</span>
+</p>
+
+<% @items.each do |item| %>
+  <div class="card-item-index">
+    <%= image_tag item.image_id, size: "250x220" %>
+    <p class="card-title"><%= item.name %></p>
+    <p class="card-title">¥<%= item.price.to_s (:delimited)%></p>
+  </div>
+<% end %>
+<%= paginate @items %>
+
+
+
+
+
+
+
+
+

@@ -6,10 +6,18 @@
 </div>
 
 <h4>新着商品</h4>
+
 <% @items.each do |item| %>
- <%= image_tag item.image_id, size: "200x150" %>
- <%= item.name %>
- <%= item.price %>円
-<% end %><br>
+ <div class="card-home">
+  <div class="card-body">
+         <%= image_tag item.image_id, size: "180x160" %>
+         <p class="card-text"><%= item.name %></p>
+         <p class="card-text">¥<%= item.price.to_s (:delimited) %></p>
+  </div>
+ </div>
+<% end %>
+
+
+
 
 <%= link_to "全ての商品を見る ＞", items_path %>

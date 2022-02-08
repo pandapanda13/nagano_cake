@@ -45,6 +45,22 @@
 }
 
 label {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: bold;
+}
+
+.address-table{
+  margin:20px auto;
+}
+
+.card-item-index {
+  width: 250px;
+  height: 350px;
+  display: inline-block;
+}
+
+.card-home {
+  width: 180px;
+  height: 2000px;
+  display: inline-block;
 }
