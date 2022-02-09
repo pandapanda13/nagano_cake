@@ -26,12 +26,10 @@ Rails.application.routes.draw do
     get 'orders/index'
     get 'orders/show'
   end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/empty'
-    get 'cart_items/create'
+
+  scope module: 'public' do
+    resources :cart_items, only:[:index, :create, :update, :destroy]
+    delete 'cart_items/empty'
   end
 
   scope module: 'public' do

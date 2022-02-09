@@ -1,23 +1,47 @@
-<div class= "main-visual">
-  <h6>ようこそ、ながのCAKEへ！<br>
+<div class="container">
+ <div class="row">
+  <div class="col-8 offset-2">
+   <h5 class="border rounded mt-4 p-4">ようこそ、ながのCAKEへ！<br>
       このサイトは、ケーキ販売のECサイトになります。<br>
       会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。</h6>
-</div>
-
-<h4>新着商品</h4>
-
-<% @items.each do |item| %>
- <div class="card-home">
-  <div class="card-body">
-         <%= image_tag item.image_id, size: "180x160" %>
-         <p class="card-text"><%= item.name %></p>
-         <p class="card-text">¥<%= item.price.to_s (:delimited) %></p>
+      購入には会員登録が必要になります。</h5>
   </div>
  </div>
-<% end %>
+
+ <div class="row">
+  <div class="col-2 offset-2 mt-3">
+   <h4 class="font-weight-bold">新着商品</h4>
+  </div>
+ </div>
+
+ <div class="row mt-1 h-25">
+  <div class="col-10 offset-2">
+   <% @items.each do |item| %>
+   <div class="card-home">
+    <div class="card-body">
+     <a href= "/items/<%= item.id %>" class="card-home">
+      <%= image_tag item.image_id, size: "180x120" %>
+      <p class="card-text"><%= item.name %></p>
+      <p class="card-text">¥<%= item.price.to_s (:delimited) %></p>
+    </div></a>
+   </div>
+   <% end %>
+  </div>
+ </div>
+
+ <div class="row">
+  <div class="col-3 offset-9 mt-4">
+   <%= link_to "全ての商品を見る ＞", items_path %>
+  </div>
+ </div>
+</div>
 
 
 
 
-<%= link_to "全ての商品を見る ＞", items_path %>
+
+
+
+
+
+

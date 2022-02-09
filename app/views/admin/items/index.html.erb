@@ -1,12 +1,17 @@
 <div class="container">
  <div class="row">
- <h2>商品一覧</h2>
-  <%= link_to new_admin_item_path, class: "btn btn-link form-control text-right" do %>
-  ＋
-  <% end %>
+     <p class="title col-2 offset-1 px-4">商品一覧</p>
+     <div class="btn-plus col-1 ml-auto">
+      <%= link_to new_admin_item_path, class: "btn btn-link mt-2" do %>
+      <h4>+</h4>
+      <% end %>
+     </div>
+  </div>
+
+
  <table class="table table-hover table-inverse">
     <thed>
-      <tr>
+      <tr class="table-secondary">
         <th>商品ID</th>
         <th>商品名</th>
         <th>税抜価格</th>

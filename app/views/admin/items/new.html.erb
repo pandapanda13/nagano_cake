@@ -1,27 +1,80 @@
-<h2>商品新規登録</h2>
+<div class="container">
+ <div class="row">
+  <p class="title col-4 offset-1 px-">商品新規登録</p>
+ </div>
+</div>
+
 <%= form_with model: @item, url:admin_items_path, local:true do |f| %>
- <h4>商品画像</h4>
- <%= f.file_field :image_id, accept: "image/*" %>
+<div class="row">
+ <div class="col-2 offset-2">
+   <p class="item-title">商品画像</p>
+ </div>
+ <div class="col-4">
+   <%= f.file_field :image_id, accept: "image/*" %>
+ </div>
+</div>
 
- <h4>商品名</h4>
- <%= f.text_field :name %>
+<div class="row">
+ <div class="col-2 offset-2">
+  <p class="item-title">商品名</p>
+ </div>
+ <div class="col-4">
+  <%= f.text_field :name, size: "35"%>
+ </div>
+</div>
 
- <h4>商品説明</h4>
- <%= f.text_area :introduction %>
+<div class="row">
+ <div class="col-2 offset-2">
+  <p class="item-title">商品説明</p>
+ </div>
+ <div class="col-4">
+  <%= f.text_area :introduction, size: "34"%>
+ </div>
+</div>
 
- <h4>ジャンル</h4>
- <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name) %>
+<div class="row">
+ <div class="col-2 offset-2">
+  <p class="item-title">ジャンル</p>
+ </div>
+ <div class="col-4">
+  <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name,), prompt: '選択してください' %>
+ </div>
+</div>
 
+<div class="row">
+ <div class="col-2 offset-2">
+  <p class="item-title">税抜価格</p>
+ </div>
+ <div class="col-4">
+  <%= f.text_field :price, size: "35" %>円
+ </div>
+</div>
 
- <h4>税抜価格</h4>
- <%= f.text_field :price %>
- 円
+<div class="row">
+ <div class="col-2 offset-2">
+  <p class="item-title">販売ステータス</p>
+ </div>
+ <div class="col-4">
+  <%= f.radio_button :is_active, true %>
+  <%= f.label :is_active,"販売中", value: true %>
+  <%= f.radio_button :is_active, false %>
+  <%= f.label :is_active,"販売停止中", value: false %><br>
+ </div>
+</div>
+<div class="col-2 offset-4">
+ <%= f.submit :新規登録, class: 'btn btn-success px-5 px-3' %>
+</div>
 
- <h4>販売ステータス</h4>
- <%= f.radio_button :is_active, true %>
- <%= f.label :is_active,"販売中", value: true %>
- <%= f.radio_button :is_active, false %>
- <%= f.label :is_active,"販売停止中", value: false %><br>
-
- <%= f.submit "新規登録" %>
 <% end %>
+
+
+
+
+
+
+ 
+ 
+
+ 
+ 
+ 

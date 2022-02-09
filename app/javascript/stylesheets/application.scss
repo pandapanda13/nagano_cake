@@ -13,15 +13,11 @@
   margin-top: 15px;
 }
 
+
 .subtitle {
   display: inline-block;
   background-color: #dcdcdc;
   margin-top: 20px;
-}
-
-.mypagetitle {
-  font-weight: bold;
-  font-size: 18px;
 }
 
 
@@ -64,3 +60,30 @@ label {
   height: 2000px;
   display: inline-block;
 }
+
+.btn-plus {
+  width: 50px;
+ 	height: 54px;
+	display: inline-block;
+ 	border-radius: 50%;
+ 	line-height: 10px;
+	text-decoration :none;
+	text-align: center;
+ 	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+	transition: background-color 1s;
+  color: black;
+}
+
+select {
+  width: 190px;
+}
+
+.card-home{
+  height: 150px;
+}
+
+.mypage-table{
+  height: 50px;
+
+}
+
