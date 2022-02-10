@@ -2,49 +2,61 @@
   <div class="row">
    <div class="col-12">
      <p class= "title">配送先登録/一覧</p><br>
-     <%= form_with model: @address, url: addresses_path, local:true do |f| %>
-
-      <div class="field">
-       <label for="postal_code": class="col-4">郵便番号（ハイフンなし）</label>
-       <%= f.text_field :postal_code %>
-      </div>
-
-      <div class="field">
-       <label for="address": class="col-4">住所</label>
-       <%= f.text_field :address %>
-      </div>
-
-      <div class="field">
-       <label for="name": class="col-4">宛名</label>
-       <%= f.text_field :name %>
-      </div>
-
-      <%= f.submit :新規登録, class: 'btn btn-success' %>
-
-      </div>
-     <% end %>
+  </div>
+  <%= form_with model: @address, url: addresses_path, local:true do |f| %>
+  <div class="row">
+   <div class="col-6 offset-1">
+    <p class="mr-4">郵便番号(ハイフンなし)</p>
+   </div>
+   <div class="col-5">
+    <%= f.text_field :postal_code %>
    </div>
   </div>
 
   <div class="row">
-   <div class="col-8 ml-3">
+   <div class="col-6 offset-1">
+    <p class="mr-4">住所</p>
+   </div>
+   <div class="col-5">
+    <%= f.text_field :address, size: "50" %>
+   </div>
+  </div>
+
+  <div class="row">
+   <div class="col-6 offset-1">
+    <p class="mr-4">宛名</p>
+   </div>
+   <div class="col-2">
+    <%= f.text_field :name %>
+   </div>
+   <div class="col-1 offset-2">
+    <%= f.submit :新規登録, class: 'btn btn-success ml-5' %>
+   </div>
+  </div>
+  <% end %>
+ </div>
+
+
+  <div class="row">
+   <div class="col-11">
     <table class="address-table table-bordered ">
      <thed>
        <tr class="table-active">
-        <th>郵便番号</th>
-        <th>住所</th>
-        <th>宛名</th>
-        <th></th>
+        <th class="py-1 px-3">郵便番号</th>
+        <th class="py-1 px-3">住所</th>
+        <th class="py-1 px-3">宛名</th>
+        <th class="py-1 px-3"></th>
        </tr>
      </thed>
      <tbody>
      <% @addresses.each do |address| %>
        <tr>
-        <td><%= address.postal_code %></td>
-        <td><%= address.address %></td>
-        <td><%= address.name %></td>
-        <td><%= link_to "編集する", edit_address_path(address.id), class: 'btn btn-success' %>
-            <%= link_to "削除する", address_path(address.id), method: :delete, class: 'btn btn-danger' %>
+        <td class="py-2 px-4"><%= address.postal_code %></td>
+        <td class="py-2 px-4"><%= address.address %></td>
+        <td class="py-2 px-4"><%= address.name %></td>
+        <td class="py-2">
+         <%= link_to "編集する", edit_address_path(address.id), class: 'btn btn-success mx-1' %>
+         <%= link_to "削除する", address_path(address.id), method: :delete, class: 'btn btn-danger' %>
         </td>
        </tr>
      <% end %>

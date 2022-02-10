@@ -18,18 +18,16 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
   end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/create'
+
+  scope module: 'public' do
     get 'orders/thanks'
-    get 'orders/confirm'
-    get 'orders/index'
-    get 'orders/show'
+    post 'orders/confirm'
+    resources :orders, only:[:new, :create, :index, :show]
   end
 
   scope module: 'public' do
-    resources :cart_items, only:[:index, :create, :update, :destroy]
     delete 'cart_items/empty'
+    resources :cart_items, only:[:index, :create, :update, :destroy]
   end
 
   scope module: 'public' do
