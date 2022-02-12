@@ -8,18 +8,25 @@
       <h7><%= @item.introduction %></h7>
 
       <p class="item-price mt-4"><span class="h4">¥<%= @item.add_tax_price.to_s (:delimited) %></span>(税込)</p>
+      <% if @item.is_active == true %>
+       <h5 class="mt-1">販売中</h5>
+      <% else %>
+       <h5 class="mt-1">売切れ</h5>
+      <% end %>
 
 　　<div class="select">
-      <% if @item.is_active == TRUE %>
-       <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true)do |f| %>
-        <%= f.label :amount, "個数選択" %>
-         <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
-        <%= f.hidden_field :item_id, :value => @item.id %>
-        <%= f.submit "カートに入れる", class: 'btn btn-success px-2 py-2 ml-4' %>
-
+       <% if @item.is_active == TRUE %>
+        <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true)do |f| %>
+         <% if customer_signed_in? %>
+         <%= f.label :amount, "個数選択" %>
+          <%= f.select :amount, [1,2,3,4,5,6,7,8,9,10] %>
+          <%= f.hidden_field :item_id, :value => @item.id %>
+          <%= f.submit "カートに入れる", class: 'btn btn-success px-2 py-2 ml-4' %>
+         <% else %>
+         <% end %>
        <% end %>
       <% end %>
     </div>
     </div>
-  </div>
+  </div> 
 </div>

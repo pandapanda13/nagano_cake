@@ -1,2 +1,65 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <p class="title col-3 offset-1 px-5 mt-2">注文情報確認</p>
+  </div>
+
+  <div class="row">
+    <div class="col-7 mt-2">
+      <table class="order-comfirm-table table-bordered">
+        <thed>
+          <tr class="table-secondary">
+            <th class= "py-2 px-5">商品名</th>
+            <th class= "py-2 px-5">単価(税込)</th>
+            <th class= "py-2 px-5">数量</th>
+            <th class= "py-2 px-5">小計</th>
+          </tr>
+        </thed>
+        <tbody>
+        <% @total = 0 %>
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td class="py-2 px-5"><%= cart_item.item.name %></td>
+            <td class="py-2 px-5"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+            <td class="py-2 px-5"><%= cart_item.amount %></td>
+            <td class="py-2 px-5"><%= cart_item.subtotal.to_s (:delimited) %></td>
+                                  <% @total += cart_item.subtotal %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-5 mt-2">
+      <table class="total-table table-bordered">
+        <thed>
+          <tr><th class="table-active py-2 px-5">送料</th><td class="py-2 px-4"><%= @order.shipping_fee %></td></tr>
+          <tr><th class="table-active py-2 px-5">商品合計</th><td class="py-2 px-4"><%= @total.to_s (:delimited) %></td></tr>
+          <tr><th class="table-active py-2 px-5">請求合計</th><td class="py-2 px-4"><%= @total + @order.shipping_fee.to_i %></td></tr>
+        </thed>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 mt-5">
+      <p class="font-weight-bold h5">支払い方法</p>
+    </div>
+    <div class="col-3 mt-5">
+      <%= @order.payment_i18n %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2 mt-5">
+      <p class="font-weight-bold h5">お届け先</p>
+    </div>
+    <div class="col-6">
+      <p class="mt-5">〒<%= @order.postal_code %>  <%= @order.address %><br>
+      <%= @order.name %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 offset-4">
+      <%= link_to "注文を確定する", orders_path, class: 'btn btn-success py-2 px-5 mt-4' %>
+    </div>
+  </div>
+
+</div>

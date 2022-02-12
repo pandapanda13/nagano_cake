@@ -51,7 +51,7 @@ label {
 
 .card-item-index {
   width: 250px;
-  height: 350px;
+  height: 250px;
   display: inline-block;
 }
 
@@ -73,10 +73,14 @@ label {
 	transition: background-color 1s;
   color: black;
 }
+.collection_select {
+  width: 400px;
+}
 
 select {
   width: 190px;
 }
+
 
 .card-home{
   height: 150px;
@@ -84,6 +88,7 @@ select {
 
 .mypage-table{
   height: 50px;
-
 }
+
+
 

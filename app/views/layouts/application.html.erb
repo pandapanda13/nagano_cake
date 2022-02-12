@@ -12,10 +12,18 @@
 
   <body>
     <header>
+      <% if customer_signed_in? %>
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <p class="logo"><span>LOGO</span></p>
-          <% if customer_signed_in? %>
+          <div class="row">
+          <p class="logo h2 text-center"><span>LOGO</span></p>
+          </div>
+
+          <div class="row pt-4">
+            <p cless="greeting">ようこそ、<%= current_customer.last_name %>さん！</p>
+          </div>
+
+          <div class="row">
           <ul class="navbar-nav ml-auto">
             <li><%= link_to customers_mypage_path, class: "btn btn-outline-dark ml-3" do %></i>
                  マイページ
@@ -34,8 +42,18 @@
                 <% end %>
             </li>
           </ul>
+          </div>
+        </div>
+      </nav>
 
-          <% elsif admin_signed_in? %>
+      <% elsif admin_signed_in? %>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <div class="row">
+          <p class="logo h2 text-center"><span>LOGO</span></p>
+          </div>
+
+          <div class="row">
           <ul class="navbar-nav ml-auto">
             <li><%= link_to admin_items_path, class: "btn btn-outline-dark ml-3" do %></i>
                  商品一覧
@@ -58,7 +76,16 @@
                 <% end %>
             </li>
           </ul>
-          <% else %>
+          </div>
+        </div>
+      </nav>
+      <% else %>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <div class="row">
+          <p class="logo h2 text-center"><span>LOGO</span></p>
+          </div>
+          <div class="row">
           <ul class="navbar-nav ml-auto">
             <li><%= link_to about_path, class: "btn btn-outline-dark ml-3" do %></i>
                  About
@@ -77,12 +104,9 @@
                 <% end %>
             </li>
           </ul>
-
-
-
-
-          <% end %>
+          </div>
         </div>
+      <% end %>
       </nav>
     </header>
     <%= yield %>

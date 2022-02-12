@@ -1,6 +1,8 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def index
-    @items = Item.page(params[:page])
+    @items = Item.all.page(params[:page]).per(8)
   end
 
   def show

@@ -1,17 +1,35 @@
-<p>
-  <span style="font-size:2em;">商品一覧</span>
-  <span style="font-size:1.5em;">(全<%= Item.count %>件）</span>
-</p>
-
-<% @items.each do |item| %>
-  <a href= "/items/<%= item.id %>" class="card-item-index">
-  <div class="card-item-index">
-    <%= image_tag item.image_id, size: "220x160" %>
-    <p class="card-title"><%= item.name %></p>
-    <p class="card-title">¥<%= item.price.to_s (:delimited)%></p>
+<div class="container">
+  <div class="row">
+   <p>
+    <span style="font-size:2em;">商品一覧</span>
+    <span style="font-size:1.5em;">(全<%= Item.count %>件）</span>
+   </p>
   </div>
-<% end %>
-<%= paginate @items %>
+
+  <div class="row">
+    <div class="col-11 offset-1"
+　　　<% @items.each do |item| %>
+       <a href= "/items/<%= item.id %>" class="card-item-index">
+       <div class="card-item-index">
+        <%= image_tag item.image_id, size: "220x160" %>
+        <p class="card-title"><%= item.name %></p>
+        <p class="card-title">¥<%= item.price.to_s (:delimited)%></p>
+       </div>
+　　　<% end %>
+   </div>
+  </div>
+  <div class="row">
+   <div class="col-2 offset-5 mt-2">
+     <%= paginate @items %>
+   </div>
+ </div>
+</div>
+
+
+
+
+
+
 
 
 
