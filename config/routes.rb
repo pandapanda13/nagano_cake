@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'order_details/update'
+    resources :order_details, only:[:update]
   end
   namespace :admin do
-    get 'orders/show'
-    get 'orders/update'
+    resources :orders, only:[:show, :update]
   end
   namespace :admin do
     resources :customers, only:[:index, :show, :edit, :update]

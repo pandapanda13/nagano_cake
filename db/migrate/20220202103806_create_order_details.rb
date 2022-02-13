@@ -5,7 +5,7 @@ class CreateOrderDetails < ActiveRecord::Migration[6.1]
       t.integer :order_id
       t.integer :price
       t.integer :amount
-      t.integer :production_progress
+      t.integer :production_progress, default: 0
       t.datetime :remember_created_at
       t.datetime :remember_updated_at
 

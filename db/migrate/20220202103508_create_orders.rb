@@ -8,7 +8,7 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.integer :shipping_fee
       t.integer :bill
       t.integer :payment
-      t.integer :order_progress
+      t.integer :order_progress, default: 0
       t.datetime :remember_created_at
       t.datetime :remember_updated_at
 

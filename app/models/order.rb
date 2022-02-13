@@ -7,10 +7,11 @@ class Order < ApplicationRecord
   validates :name, presence: true
   validates :shipping_fee, presence: true
   validates :bill, presence: true
-  validates :payment, presence: true, inclusion: {in: [0, 1]}
+  validates :payment, presence: true
   validates :order_progress, presence: true
 
   enum payment: { credit_card: 0, transfer: 1 }
+  enum order_progress: { waiting: 0, paid: 1, in_progress: 2, preparing: 3, shipped: 4 }
 
 
   def shipping_fee

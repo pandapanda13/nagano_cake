@@ -36,7 +36,7 @@
     <div class="col-5 offset-1">
       <%= f.radio_button :address_list, 1 %>
       <%= f.label :address_List_1, "登録済住所から選択" %><br>
-      <%= f.collection_select :address_1, @addresses, :id, :address_display %>
+      <%= f.collection_select :address_list_1, @addresses, :id, :address_display %>
     </div>
   </div>
 
@@ -71,14 +71,11 @@
     </div>
   </div>
 
-　<div class="row">
+  <div class="row">
     <div class="col-4 offset-4">
       <%= f.submit "確認画面へ進む", class: 'btn btn-success' %>
-
     </div>
   </div>
-
-
 
   <% end %>
 </div>

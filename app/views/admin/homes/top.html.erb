@@ -1,25 +1,34 @@
 <div class="container">
  <div class="row">
-　<h2>注文履歴一覧</h2>
-　<table class="table table-hover table-inverse">
+　<p class="title col-3 offset-1 px-5 mt-2">注文履歴一覧</p>
+　<table class="table ">
     <thed>
-      <tr>
+      <tr class="table-secondary">
         <th>購入日時</th>
         <th>購入者</th>
         <th>注文個数</th>
-        <th>ステータス</th>
+        <th>注文ステータス</th>
       </tr>
     </thed>
     <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to order.created_at, admin_orders_show_path(order.id) %></td>
-        <td><%= order.full_name %></td>
+        <td><%= link_to admin_order_path(order) do %>
+            <%= order.created_at.strftime('%Y/%m/%d/%H:%M:%S') %>
+            <% end %></td>
+        <td><%= order.customer.full_name %></td>
+        <td></td>
+        <td><%= order.order_progress_i18n %></td>
 
         </td>
       </tr>
     <% end %>
     </tbody>
+
   </table>
+  <div class="col-2 offset-5 mt-2">
+     <%= paginate @orders %>
+  </div>
  </div>
+
 </div>

@@ -19,11 +19,12 @@
    <% @items.each do |item| %>
    <div class="card-home">
     <div class="card-body">
-     <a href= "/items/<%= item.id %>" class="card-home">
+     <%= link_to item_path(item), class: "card-home" do %>
       <%= image_tag item.image_id, size: "180x120" %>
       <p class="card-text"><%= item.name %></p>
       <p class="card-text">¥<%= item.price.to_s (:delimited) %></p>
-    </div></a>
+     <% end %>
+    </div>
    </div>
    <% end %>
   </div>
