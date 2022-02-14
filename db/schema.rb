@@ -122,7 +122,7 @@ ActiveRecord::Schema.define(version: 2022_02_13_082130) do
     t.integer "order_id"
     t.integer "price"
     t.integer "amount"
-    t.integer "production_progress", default: 0
+    t.integer "production_progress"
     t.datetime "remember_created_at"
     t.datetime "remember_updated_at"
     t.datetime "created_at", precision: 6, null: false

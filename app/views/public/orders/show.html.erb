@@ -1,2 +1,68 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <p class="title col-2 offset-1 px-2 mt-2">注文履歴詳細</p>
+  </div>
+
+  <div class="row">
+    <p class="col-7 mt-1 font-weight-bold">注文情報</p><br>
+    <p class="col-4 offset-1 mt-1 font-weight-bold">請求情報</p><br>
+  </div>
+
+  <div class="row">
+     <table class="table-bordered col-7 mt-2　">
+       <thed>
+         <tr><th class="table-active py-2 px-2">注文日</th><td class="py-2 px-2"><%= @order.created_at.strftime('%Y/%m/%d')  %></td></tr>
+         <tr><th class="table-active py-2 px-2">配送先</th><td class="py-2 px-2"><%= @order.address %><br><%= @order.name %></td></tr>
+         <tr><th class="table-active py-2 px-2">支払い方法</th><td class="py-2 px-2"><%= @order.payment_i18n %></td></tr>
+         <tr><th class="table-active py-2 px-2">ステータス</th><td class="py-2 px-2"><%= @order.order_progress_i18n %></td></tr>
+       </thed>
+     </table>
+
+     <table class="table-bordered col-3 offset-1 mt-2 ">
+         <% @total = 0 %>
+         <% @total = @order.bill - @order.shipping_fee.to_i %>
+       <thed>
+         <tr><th class="table-active py-2 px-2">商品合計</th><td class="py-2 px-3"><%= @total.to_s (:delimited) %></td></tr>
+         <tr><th class="table-active py-2 px-2">配送料</th><td class="py-2 px-3"><%= @order.shipping_fee %></td></tr>
+         <tr><th class="table-active font-weight-bold py-2 px-2">ご請求額</th><td class="py-2 px-3"><%= @order.bill.to_s (:delimited) %></td></tr>
+
+       </thed>
+     </table>
+
+  </div>
+
+  <div class="row">
+    <p class="col-7 mt-5 font-weight-bold">注文内容</p><br>
+  </div>
+
+  <div class="row">
+    <table class="table-bordered mt-1">
+      <thed>
+        <tr class="table-secondary">
+          <th class="py-2 px-5">商品名</th>
+          <th class="py-2 px-5">単価(税込)</th>
+          <th class="py-2 px-5">個数</th>
+          <th class="py-2 px-5">小計</th>
+        </tr>
+      </thed>
+      <tbody>
+        <% @total = 0 %>
+        <% @order_details.each do |order_detail| %>
+         <% @subtotal = order_detail.add_tax_price*order_detail.amount %>
+        <tr>
+          <td class="py-2 px-5"><%= order_detail.item.name %></td>
+          <td class="py-2 px-5"><%= order_detail.add_tax_price %></td>
+          <td class="py-2 px-5"><%= order_detail.amount %></td>
+          <td class="py-2 px-5"><%= @subtotal.to_s(:delimited) %></td>
+        </tr>
+        <% @total += order_detail.add_tax_price*order_detail.amount %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+
+</div>
