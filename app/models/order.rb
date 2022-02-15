@@ -14,12 +14,17 @@ class Order < ApplicationRecord
   enum order_progress: { waiting: 0, paid: 1, in_progress: 2, preparing: 3, shipped: 4 }
 
 
+
   def shipping_fee
     800.to_s
   end
 
   def add_tax_price
   (self.price * 1.10).floor
+  end
+
+  def address_display
+   '〒' + "  " + postal_code + "  " +  address
   end
 
 end
