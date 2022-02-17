@@ -7,16 +7,16 @@
   </div>
 
   <div class="row">
-    <div class="col-12>
-　　　<% @items.each do |item| %>
-       <%= link_to item_path(item), class: "card-item-index" do %>
-       <div class="card-item-index">
-        <%= image_tag item.image_id, size: "220x160" %>
-        <p class="card-title"><%= item.name %></p>
-        <p class="card-title">¥<%= item.price.to_s (:delimited)%></p>
-       </div>
+    <div class="col-12">
+     <% @items.each do |item| %>
+      <%= link_to item_path(item), class: "card-item-index float-left" do %>
+        <div class="card-item-index">
+         <%= image_tag item.image_id, size: "220x160" %>
+         <p class="card-title"><%= item.name %></p>
+         <p class="card-title">¥<%= item.price.to_s (:delimited) %></p>
+        </div>
        <% end %>
-　　　<% end %>
+     <% end %>
    </div>
   </div>
   <div class="row">

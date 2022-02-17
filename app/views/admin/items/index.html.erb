@@ -2,12 +2,11 @@
  <div class="row">
      <p class="title col-2 offset-1 px-4">商品一覧</p>
      <div class="btn-plus col-1 ml-auto">
-      <%= link_to new_admin_item_path, class: "btn btn-link mt-2" do %>
-      <h4>+</h4>
+      <%= link_to new_admin_item_path do %>
+      <h2>+</h2>
       <% end %>
      </div>
   </div>
-
 
  <table class="table table-hover table-inverse">
     <thed>
@@ -27,9 +26,9 @@
         <td><%= item.price %></td>
         <td><%= item.genre.name %></td>
         <td><% if item.is_active == true %>
-              <%= item.is_active = "販売中" %>
+              <p class="text-success font-weight-bold"><%= item.is_active = "販売中" %></p>
             <% else %>
-              <%= item.is_active = "販売停止中" %>
+              <p class="text-black-50 font-weight-bold"><%= item.is_active = "販売停止中" %></p>
             <% end %>
         </td>
       </tr>

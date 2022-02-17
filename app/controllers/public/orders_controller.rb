@@ -9,7 +9,6 @@ class Public::OrdersController < ApplicationController
   def confirm
    params[:order][:payment] = params[:order][:payment].to_i
    @order = Order.new(order_params)
-
    @cart_items = current_customer.cart_items
     if params[:order][:address_list] == "0"
       @order.postal_code = current_customer.postal_code
@@ -56,7 +55,6 @@ class Public::OrdersController < ApplicationController
       @order = Order.new(order_params)
       render :new
     end
-
   end
 
 

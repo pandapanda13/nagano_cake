@@ -16,7 +16,7 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <div class="row">
-          <p class="logo h2 text-center"><span>LOGO</span></p>
+          <p class="logo h2 text-center"><span>ながのCAKE</span></p>
           </div>
 
           <div class="row pt-4">
@@ -41,16 +41,26 @@
                  ログアウト
                 <% end %>
             </li>
+           </span>
           </ul>
+          <div class="col-5 offset-7">
+           <div class="input-group mt-2">
+            <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>
+             <span class="input-group-btn input-group-append">
+             <submit type="submit" id="btn-search" class="btn btn-outline-success" ><i class="fas fa-search"></i></submit>
+             </span>
+           </div>
           </div>
         </div>
       </nav>
+
+
 
       <% elsif admin_signed_in? %>
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <div class="row">
-          <p class="logo h2 text-center"><span>LOGO</span></p>
+          <p class="logo h2 text-center"><span>ながのCAKE</span></p>
           </div>
 
           <div class="row">
@@ -76,6 +86,14 @@
                 <% end %>
             </li>
           </ul>
+          <div class="col-5 offset-7">
+           <div class="input-group mt-2">
+            <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>
+             <span class="input-group-btn input-group-append">
+             <submit type="submit" id="btn-search" class="btn btn-outline-success" ><i class="fas fa-search"></i></submit>
+             </span>
+           </div>
+          </div>
           </div>
         </div>
       </nav>
@@ -83,7 +101,7 @@
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <div class="row">
-          <p class="logo h2 text-center"><span>LOGO</span></p>
+          <p class="logo h2 text-center"><span>ながのCAKE</span></p>
           </div>
           <div class="row">
           <ul class="navbar-nav ml-auto">
@@ -104,6 +122,14 @@
                 <% end %>
             </li>
           </ul>
+          <div class="col-5 offset-7">
+           <div class="input-group mt-2">
+            <input type="text" id="txt-search" class="form-control input-group-prepend" placeholder="Search"></input>
+             <span class="input-group-btn input-group-append">
+             <submit type="submit" id="btn-search" class="btn btn-outline-success" ><i class="fas fa-search"></i></submit>
+             </span>
+           </div>
+          </div>
           </div>
         </div>
       <% end %>
